@@ -1,0 +1,618 @@
+@import url('https://fonts.googleapis.com/css?family=Alegreya|Amatic+SC|Cantarell|Droid+Serif|Fjalla+One|Josefin+Sans|Lato|Love+Ya+Like+A+Sister|Merriweather|Montserrat|Open+Sans|Open+Sans+Condensed:300|Oswald|Playfair+Display|Raleway|Roboto|Roboto+Condensed|Roboto+Slab|Source+Sans+Pro|Unica+One|Vollkorn');
+/*font-family: 'Satisfy', cursive;
+font-family: 'Dancing Script', cursive;
+font-family: 'Droid Sans', sans-serif;
+font-family: 'Love Ya Like A Sister', cursive;
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Francois One', sans-serif;
+font-family: 'Archivo Black', sans-serif;
+font-family: 'Cinzel', serif;
+font-family: 'Righteous', cursive;
+font-family: 'Cardo', serif;
+*/
+
+@font-face {
+  font-family: 'standard';
+  src: local('standard'), url('./fonts/NexaRustSans-Black.otf') format('otf');
+}
+*{
+font-family: 'Droid Sans', sans-serif;
+  width:auto;
+  margin:0;
+  padding:0;
+}
+*::-webkit-scrollbar { 
+    display: none; 
+}
+
+::-webkit-scrollbar {
+  width:0;
+    display: none;
+}
+.App{
+  width: 100%;
+  height:100%;
+  position: fixed;
+}
+#centerGlass{
+  position:absolute;
+  top:0;
+  left:50%;
+  transform: translateX(-50%);
+  height:100%;
+  width:auto;
+}
+
+.orderConfirmationContainer{
+  width:100%;
+  color:#f1f1f1;
+  text-align: center;
+  margin-top: 50vh;
+  transform:translateY(-50%);
+}
+
+.fullscreen{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:auto;
+  height:30px;
+  cursor: pointer;
+}
+
+.sectionContainer{
+  height:100%;
+  width:50%;
+  display: inline-block;
+}
+
+
+
+.doEditorLogo{
+  margin:10px;
+  margin-left:0;
+  height:auto;
+  width:60px;
+}
+
+.editorLogo{
+    margin:10px;
+  height:auto;
+  width:100px;
+}
+
+
+
+#leftNav{
+  position: relative;
+  background-color: #171814;
+  height:20vh;
+  width:100%;
+}
+
+.htmlTag{
+
+
+  margin:0px;
+  padding:0px;
+  color:#a6e22e;
+}
+.htmlBrackets{
+  color:rgb(238,38,134);
+}
+.editableContent{
+  font-size: 18px;
+  font-weight: bolder;
+  color:white;
+} 
+.editableContent.placeholder {
+  color: #666;
+}
+.editableContent:hover, .editableContent:focus {
+  background:rgb(60,60,60);
+}
+
+.editableContent:focus{
+  outline: none;
+}
+.tagContainer{
+  font-size: 16px;
+  padding:0;
+  line-height:20px;
+}
+
+.marginTop{
+  margin-top: 16px;
+}
+.inline{
+  width:auto;
+  display: inline-block;
+}
+
+#textEditor{
+  border-top: 3px solid rgb(161,161,161);
+  position: relative;
+  overflow: scroll;
+  height:80vh;
+  width:100%;
+  background-color: #272822;
+}
+
+.button{
+  height:15px;
+  width:15px;
+  border-radius:8px;
+  line-height: 15px;
+  border:none;
+  cursor: pointer;
+
+}
+
+.addButton{
+    background:rgb(40,220,45);
+}
+
+.removeButton{
+
+  margin-left: 10px;
+  background-color:rgb(238,38,134);
+}
+
+.codeContainer{
+  padding: 30px;
+}
+
+.uneditable{
+  color:rgb(230, 215, 93);
+  background:none;
+}
+
+.uneditable:hover{
+  background: none;
+}
+
+/*CSS CONTAINER*/
+#cssContainer{
+  display: none;
+}
+
+
+
+/*LEFT NAV*/
+.editorTab{
+  cursor: pointer;
+  width:120px;
+  height:40px;
+  position: absolute;
+  bottom:0;
+  line-height: 40px;
+  text-align: center;
+  color:rgb(151,151,151);
+}
+#htmlTab{
+  left:0px;
+}
+#cssTab{
+  left:120px;
+}
+
+#submitButton{
+    background-color: #171814;
+    color:white;
+  right:0px;
+  bottom:0;
+}
+.activeTab{
+  background-color: rgb(39,40,34);
+}
+.inactiveTab{
+  background-color: rgb(57,57,55);
+}
+
+.cssSelector{
+      color:rgb(40,220,45);
+}
+.cssProperty{
+   margin-left: 15px;
+  color:rgb(102,217,239);
+}
+.cssProperty.uneditable{
+   margin-left: 15px;
+  color:rgb(101,101,101);
+}
+.cssValue{
+  margin-left: 5px;
+  color:white;
+  min-width: 200px; 
+}
+.cssValue:hover, .cssValue:focus {
+  border: 0;
+  outline: 0;
+  background:rgb(60,60,60);
+}
+
+.cssBracket{
+  color:white;
+}
+
+
+/*RENDER CONTAINER*/
+
+.comment{
+  color:rgb(101,101,101);
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.methodsCss{
+
+}
+.ingredientsCss{
+  width:100%;
+}
+
+
+
+
+
+
+
+
+
+#rightContainer{
+    background-position: center;
+  overflow: hidden;
+  position: absolute;
+  left:50%;
+  height:100%;
+  width:50%;
+    overflow: hidden;
+  width:50%;background: rgb(255,255,255); /* Old browsers */
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+0,ffffff+0,e2efff+100 */
+ background: -moz-linear-gradient(top, rgba(193,184,160,0.3) 0%, rgba(193,184,160,0.3) 24%, rgba(223,182,93,0.3) 80%, rgba(234,181,69,0.4) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(193,184,160,0.3) 0%,rgba(193,184,160,0.3) 24%,rgba(223,182,93,0.3) 80%,rgba(234,181,69,0.4) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(193,184,160,0.3) 0%,rgba(193,184,160,0.3) 24%,rgba(223,182,93,0.3) 80%,rgba(234,181,69,0.4) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccc1b8a0', endColorstr='#eab545',GradientType=0 ); /* IE6-9 */
+}
+
+#iphoneKnockup{
+  width:100%;
+  height: 100%;
+}
+
+.knockupContainer{
+  transform:translate(-50%, -50%);
+  width:330px;
+  height:auto;
+  top:50%;
+  left:50%;
+  position:absolute;
+  overflow: hidden;
+}
+
+.iphoneContainer {
+  position: relative;
+}
+
+.iphoneContainer img {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.scrollableContainer {
+  padding-top: 50px;
+   background:white;
+    margin-right: 5%;
+
+  margin-top: 5%;
+  padding-bottom: 4%;
+  position: absolute;
+  top: 10%;
+  left: 6%;
+  bottom:10%;
+  right:12%;
+  width: 90%;
+  overflow-x: hidden; 
+  overflow-y: scroll; 
+  z-index: 0;
+}
+
+
+.headerContainer{  
+  padding-right: 10px;
+  padding-bottom: 10px;
+  margin-top: 15%;
+  padding-top: 13%;
+  text-align: center;
+  width:100%;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.htmlAttr{
+    color:rgb(102,217,239);
+}
+
+.htmlClassId{
+  color:rgb(230,215,99);
+}
+
+#loadingContainer{
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-top:-50px;
+  transform: translate(-50%,-50%)
+}
+
+.loadingText{
+  color:#f1f1f1;
+}
+
+#spinner{
+  width:100px;
+  height:100px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-left: -50px;
+  margin-top: 20px;
+
+
+  -webkit-animation: spin 1s infinite linear;
+  animation: spin 1s infinite linear;
+      -webkit-animation-timing-function: ease-in-out; /* Safari 4.0 - 8.0 */
+    animation-timing-function: ease-in-out;
+  
+}
+
+.logoRelative{
+  width:100px;
+  height:100px}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: scale(1); }
+    50% { -webkit-transform: scale(1.2);}
+    100% { -webkit-transform: scale(1); }
+}
+@keyframes spin {
+    0% { -webkit-transform: scale(1); }
+    50% { -webkit-transform: scale(1.2);}
+    100% { -webkit-transform: scale(1); }
+}
+  @-moz-keyframes spin {
+    0% { -webkit-transform: scale(1); }
+    50% { -webkit-transform: scale(1.2);}
+    100% { -webkit-transform: scale(1); }
+}
+
+.ingredientCss{
+  overflow:scroll;
+list-style-type: bullet;
+list-style-position: inside;
+}
+.methodCss{
+  overflow:scroll;
+list-style-type: decimal;
+list-style-position: inside;
+}
+
+
+.rendercontainer{
+  list-style-position: inside;
+  overflow:scroll;
+  overflow-x:hidden;
+}
+
+
+
+
+#headerContent{
+  color:blue;
+  z-index: 10;
+  color:black;
+  font-family: satisfy;
+  font-size: 35px;
+}
+
+
+/*SELECT A COCKTAIL*/
+
+.homeBackground{
+  width: 100%;
+  height:100%;
+  position: absolute;
+  top:0;
+  left:0;
+   background: url('../src/images/pancake.jpg');
+   background-position: center;
+   background-size: cover;
+   overflow:scroll;
+}
+
+.homeOverlay{
+  position: fixed;
+  top:0;
+  left:0;
+    width: 100%;
+  height:100%;/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffc500+0,101010+100&0.8+0,0.8+100 */
+background: -moz-linear-gradient(top, rgba(255,197,0,0.8) 0%, rgba(16,16,16,0.8) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(255,197,0,0.8) 0%,rgba(16,16,16,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(255,197,0,0.8) 0%,rgba(16,16,16,0.8) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ccffc500', endColorstr='#cc101010',GradientType=0 ); /* IE6-9 */
+}
+
+
+#homeContainer{
+  position:absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color:#f1f1f1;
+  width:100%;
+
+
+ 
+}
+
+
+#homeLogo{
+  margin-top: 80px;
+  width:350px;
+  height:auto;
+}
+
+#doLogo{
+  margin-top: 30px;
+  width:200px;
+  height:auto;
+}
+
+#codingCrepesLogo{
+  font-family: 'Love Ya Like A Sister', cursive;
+  color:white;
+  margin-left:10px;
+  font-size:26px;
+  margin-top:-10px;
+  font-weight:bolder;
+}
+
+
+
+
+
+#welcomeText{
+font-family: 'Love Ya Like A Sister', cursive;
+  font-weight: bolder;
+  font-size: 80px;
+  margin-top: 20px;
+  height:150px;
+  color:white;
+ text-align: center;
+}
+
+
+
+#selectCocktailHeader{
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size:20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.selectBaseButton{
+  font-size: 20px;
+  font-weight: bolder;
+  font-family: 'Love Ya Like A Sister', cursive;
+    display: inline-block;
+    width:150px;
+    margin-left:10px;
+  cursor:pointer;
+  text-align: center;
+  line-height: 40px;
+  margin-top:10px;
+  height:150px;
+  line-height: 150px;
+  border-radius: 75px;
+  background: transparent; 
+}
+
+#selectCocktail{
+  width:100%;
+  display: flex;
+  margin-top:20px;
+  align-items: center;
+  justify-content: center;
+}
+
+#orderRenderLogo{
+  position: absolute;
+  top:50px;
+  right:50px;
+  width:auto;
+  height:50px;
+}
+
+.selectBaseButton:hover{
+ -webkit-animation: scale 0.3s linear forwards;
+  animation: scale 0.3s  linear forwards;
+      -webkit-animation-timing-function: ease-in-out; /* Safari 4.0 - 8.0 */
+    animation-timing-function: ease-in-out;
+opacity: 1;
+}
+@-webkit-keyframes scale {
+    0% { -webkit-transform: scale(1); }   
+    100% { -webkit-transform: scale(1.05); }
+}
+@keyframes scale {
+    0% { -webkit-transform: scale(1); }
+    100% { -webkit-transform: scale(1.05); }
+}
+  @-moz-keyframes scale {
+    0% { -webkit-transform: scale(1); }
+    100% { -webkit-transform: scale(1.05); }
+}
+
+#helperContainer{
+  background-color: #272822;
+  position: absolute;
+  top:10px;
+  right:10px;
+ color:#f1f1f1;
+  border-radius: 20px;
+  padding:15px;
+  text-align: left;
+  width:150px;
+  z-index: 2;
+}
+
+.footerContainerCss{  
+  padding-left: 10%;
+    padding-right: 10px;
+}
+.renderheaderContainer{  
+position:fixed;
+top:0;
+left:0;
+padding-top: 10px;
+padding-bottom: 10px;
+  text-align: center;
+  width:100%;
+}
+.renderfooterContainer{  
+
+  width:100%;
+    padding-left: 5%;
+}
+
+.continueButton{
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 3px;
+  width:150px;
+  padding:5px 20px;
+  background: rgb(90,255,95)
+  
+}
+
